@@ -1,0 +1,109 @@
+:root {
+  --main-blue: #2b7ff5;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+/* Navbar section */
+#landingPageNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.appTitle {
+  color: var(--main-blue);
+  font-weight: bolder;
+  padding: 10px;
+}
+
+#navButtons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+}
+
+#navSignInButton {
+  background: transparent;
+  border: none;
+}
+
+#navGetStartedButton {
+  background: var(--main-blue);
+  color: white;
+  border:none;
+  border-radius: 4px;
+  padding: 10px 20px;
+
+}
+
+/* Hero section */
+#landingPageHero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+#heroUpperText {
+  background: #90b3e52f;
+  color: var(--main-blue);
+  font-size: smaller;
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+#heroMainText {
+  font-size: 50px;
+  max-width: 40%;
+  font-weight: bolder;
+  line-height: 1.15;
+}
+#heroBottomText {
+  max-width: 40%;
+}
+#heroButtons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+#heroCreateAccountButton {
+  background-color: var(--main-blue);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 16px;
+}
+#heroSignInButton {
+  background-color: white;
+  color:var(--main-blue);
+  border: 1px solid lightblue;
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 12px 30px;
+}
+
+/* features section*/
+#featureDescription {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto 10%;
+  max-width: 50%;
+  text-align: center;
+}
+
+/*todo: change these three into a single component that uses the same style */
+#reviewsDescription,
+#summariesDescription,
+#questionsDescription {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
