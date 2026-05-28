@@ -67,3 +67,9 @@ input {
     border-radius: 5px;
     padding: 2%;
 }
+
+#signUpRedirect {
+    text-decoration: none;
+    color: var(--main-blue);
+    font-weight: 500;
+}

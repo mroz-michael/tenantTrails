@@ -1,6 +1,6 @@
 //file for temporary hardcoded data in-place of a backend database
 
-const users = [
+export const users = [
     {
         fullName: "Michael Mroz",
         email: "mroz@example.com",
@@ -8,9 +8,9 @@ const users = [
     }
 ];
 
-const reviews = [];
+export const reviews = [];
 
-const apartments = [];
+export const apartments = [];
 
 export function addUser(newUser) {
     users.push(newUser);
@@ -23,5 +23,3 @@ export function addReviews(newReview) {
 export function addApartment(newApartment) {
     apartments.push(newApartment);
 }
-
-export default {users, reviews, apartments}
