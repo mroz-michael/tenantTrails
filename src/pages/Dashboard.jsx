@@ -9,10 +9,10 @@ function Dashboard({}){
     const { user, logout } = useAuth();
     const navigate = useNavigate();
 
-    const numApartments = apartments.length;
-    const numReviews = apartments.reduce((runningTotal, apt) => runningTotal + apt.numReviews, 0);
-    const distinctNeighbourhoods = new Set(apartments.map(a => a.neighbourhood));
-    const numNeighbourhoods = distinctNeighbourhoods.length();
+    const numApartments = apartments?.length;
+    const numReviews = apartments?.reduce((runningTotal, apt) => runningTotal + apt.numReviews, 0);
+    const distinctNeighbourhoods = new Set(apartments?.map(a => a.neighbourhood));
+    const numNeighbourhoods = distinctNeighbourhoods?.size;
 
     function handleClick() {
         logout();
