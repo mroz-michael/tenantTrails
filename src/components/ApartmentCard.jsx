@@ -12,9 +12,10 @@ function ApartmentCard({apartment}) {
                 <img src={apartment.image} alt={apartment.name}/>
                 <span className='ratingBadge'>★ {averageRating.toFixed(1)}</span>
             </div>
-            
-            <h5>{apartment.name}</h5>
-            <p>📍 {apartment.address} - {apartment.neighbourhood}</p>
+            <div id='apartmentDetails'>
+                <h5 style={{fontWeight: "bolder"}}>{apartment.name}</h5>
+                <p style={{fontWeight: "lighter"}}>📍 {apartment.address} - {apartment.neighbourhood}</p>
+            </div>
             <div id='apartmentSummaries'>
                 {
                     apartment.summaries.length > 0 ?

@@ -17,3 +17,32 @@
     padding: 3px 9px;
     border-radius: 20px;
 }
+
+#apartmentDetails {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 0;
+    margin-left: 10px;
+}
+
+#apartmentSummaries {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 8px;
+}
+
+.summary {
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: #e8f0fe;
+    color: #2b7ff5;
+}
+
+#apartmentCardFooter {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
