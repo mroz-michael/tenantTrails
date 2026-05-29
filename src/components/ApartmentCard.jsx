@@ -27,7 +27,7 @@ function ApartmentCard({apartment}) {
                 }
             </div>
             <div id='apartmentCardFooter'>
-                <p><span>{apartment.numReviews}</span>reviews</p>
+                <p><span>{apartment.numReviews}</span> reviews</p>
                 <div className='reviewStars'>
                     {'★'.repeat(filledStars)}
                     {'☆'.repeat(emptyStars)}

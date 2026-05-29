@@ -13,6 +13,7 @@ function Dashboard({}){
 
     const [neighbourhoodFilter, setNeighbourhoodFilter] = useState('all');
     const [sortCriteria, setSortCriteria] = useState("highest");
+    const [searchQuery, setSearchQuery] = useState("");
 
     const numApartments = apartments?.length;
     const numReviews = apartments?.reduce((runningTotal, apt) => runningTotal + apt.numReviews, 0);
@@ -24,8 +25,15 @@ function Dashboard({}){
         navigate("/");
     }
 
-    const filteredApartments = 
-        apartments?.filter(a => neighbourhoodFilter == "all" || a.neighbourhood == neighbourhoodFilter)
+    //for readability, applying 2 rounds of filtering, first for dropdown, second for search bar
+    const initialFiltered = apartments?.filter(a => neighbourhoodFilter == "all" || a.neighbourhood == neighbourhoodFilter)
+    
+    const filteredApartments = initialFiltered.filter(a => 
+            searchQuery.trim() == "" || 
+            a.name.toLowerCase().includes(searchQuery.trim().toLowerCase()) ||
+            a.address.toLowerCase().includes(searchQuery.trim().toLowerCase()) ||
+            a.neighbourhood.toLowerCase().includes(searchQuery.trim().toLowerCase())
+        )
         .sort((a, b) => {
             if (sortCriteria == 'highest') {
                 return b.averageRating - a.averageRating;
@@ -41,13 +49,17 @@ function Dashboard({}){
             }
         })
 
-
     return(
         <div id='dashboardContainer'>
             <nav id='dashboardNav'>
                 <div id='leftNavContainer'>
                     <h3 id='navTitle'>TenantTrails</h3>
-                    <SearchInput placeholder="Search apartments by address or neighbourhood..."/>
+                    <SearchInput 
+                        value={searchQuery}
+                        onChange={e => setSearchQuery(e.target.value)}
+                        placeholder="Search apartments by address or neighbourhood..."
+
+                    />
                 </div>
                 <div id='rightNavContainer'>
                     <p>{user?.fullName.split(' ')[0]}</p>
