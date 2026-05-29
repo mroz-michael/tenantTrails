@@ -3,7 +3,12 @@
   --input-border: 1.5px solid rgba(20, 18, 18, 0.24);
 }
 
+body {
+    background-color: #F5f5f5;
+}
+
 #dashboardNav {
+    background: #FFFFFF;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -49,6 +54,37 @@
     font-size: 1rem;
 }
 
-.dashboardLightText {
-    
+#apartmentSection {
+    text-align: left;
+    padding: 2rem 8%;
+}
+
+#dashboardAggregateData {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.dataItem {
+    font-size: 13px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1.5px solid rgba(20, 18, 18, 0.24);
+    background: #ffffff;
+    color: #555;
+}
+
+#dashboardFilters {
+    display: flex;
+    gap: 10px;
+    margin-top: 3%;
+}
+
+#dashboardFilters select {
+    padding: 6px;
+    border-radius: 8px;
+    border: 1.5px solid rgba(0, 0, 0, 0.393);
+    background: #ffffff;
+    cursor: pointer;
+    outline: none;
 }
