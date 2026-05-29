@@ -2,7 +2,7 @@
 
 import marlstoneImg from '../assets/marlstone.jpg';
 import parkVictoriaImg from '../assets/parkvictoria.jpg';
-import lemarchantImg from '../assets/lemarchnttowers.jpg';
+import lemarchantImg from '../assets/lemarchanttowers.jpg';
 import fenwickImg from '../assets/fenwicktower.jpg';
 import southPointImg from '../assets/southpointapartments.jpg';
 

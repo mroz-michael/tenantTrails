@@ -1,9 +1,11 @@
 import '../styles/dashboard.css';
 import {useState} from "react";
-import SearchInput from "../components/SearchInput";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from 'react-router-dom';
 import { apartments } from '../data/mockData';
+
+import SearchInput from "../components/SearchInput";
+import ApartmentCard from '../components/ApartmentCard';
 
 function Dashboard({}){
     const { user, logout } = useAuth();
@@ -26,10 +28,10 @@ function Dashboard({}){
         apartments?.filter(a => neighbourhoodFilter == "all" || a.neighbourhood == neighbourhoodFilter)
         .sort((a, b) => {
             if (sortCriteria == 'highest') {
-                return b.rating - a.rating;
+                return b.averageRating - a.averageRating;
             }
             if (sortCriteria == 'lowest') {
-                return a.rating - b.rating;
+                return a.averageRating - b.averageRating;
             }
             if (sortCriteria == 'mostReviews') {
                 return b.numReviews - a.numReviews;
@@ -73,6 +75,11 @@ function Dashboard({}){
                         <option value="mostReviews">Most Reviews</option>
                         <option value="name">Alphabetical (A to Z)</option>
                     </select>
+                </div>
+                <div id='apartmentCardGrid'>
+                    {filteredApartments.map(a => (
+                        <ApartmentCard key={a.address} apartment={a}/>
+                    ))}
                 </div>
             </main>
         </div>

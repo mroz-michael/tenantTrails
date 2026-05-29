@@ -1,0 +1,19 @@
+.cardImageContainer {
+    position: relative;
+}
+
+.cardImageContainer img {
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+}
+
+.ratingBadge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 20px;
+}
