@@ -1,9 +1,8 @@
 import '../styles/dashboard.css';
 import {useState} from "react";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { apartments } from '../data/mockData';
-
 import SearchInput from "../components/SearchInput";
 import ApartmentCard from '../components/ApartmentCard';
 
@@ -90,7 +89,9 @@ function Dashboard({}){
                 </div>
                 <div id='apartmentCardGrid'>
                     {filteredApartments.map(a => (
-                        <ApartmentCard key={a.address} apartment={a}/>
+                        <Link className="apartmentCardLink" key={a.id} to={`/apartment/${a.id}`}>
+                            <ApartmentCard apartment={a}/>
+                        </Link>
                     ))}
                 </div>
             </main>

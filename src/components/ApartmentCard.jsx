@@ -1,16 +1,18 @@
 import '../styles/apartmentCard.css';
+import StarRating from './StarRating';
 
 function ApartmentCard({apartment}) {
     const averageRating = isNaN(apartment.averageRating) ? 0 : apartment.averageRating;
 
     const filledStars = Math.round(averageRating);
     const emptyStars = 5 - filledStars;
+    const summaries = [...apartment.aiSummaries, ...apartment.issues];
 
     return(
         <div className='apartmentCardContainer'>
             <div className='cardImageContainer'>
                 <img src={apartment.image} alt={apartment.name}/>
-                <span className='ratingBadge'>★ {averageRating.toFixed(1)}</span>
+                <span className='ratingBadge'><span id='star'>★</span> {averageRating.toFixed(1)}</span>
             </div>
             <div id='apartmentDetails'>
                 <h5 style={{fontWeight: "bolder"}}>{apartment.name}</h5>
@@ -18,8 +20,8 @@ function ApartmentCard({apartment}) {
             </div>
             <div id='apartmentSummaries'>
                 {
-                    apartment.summaries.length > 0 ?
-                    apartment.summaries.map(s => (
+                    summaries.length > 0 ?
+                    summaries.map(s => (
                         <span key={s} className='summary'>{s}</span>
                     ))
                     :
@@ -28,10 +30,7 @@ function ApartmentCard({apartment}) {
             </div>
             <div id='apartmentCardFooter'>
                 <p><span>{apartment.numReviews}</span> reviews</p>
-                <div className='reviewStars'>
-                    {'★'.repeat(filledStars)}
-                    {'☆'.repeat(emptyStars)}
-                </div>
+                <StarRating rating={averageRating} />
             </div>
         </div>
     )

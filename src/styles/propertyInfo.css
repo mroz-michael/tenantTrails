@@ -1,0 +1,32 @@
+#propertyInfoContainer {
+  padding: 20px 24px;
+  background: #ffffff;
+  border: 1px solid gray;
+  border-radius: 10px;
+  max-width: 320px;
+  width: 100%;
+}
+
+#propertyInfoContainer h3 {
+    text-align: left;
+}
+
+.attribute {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 1px solid #f0f0f0;
+}
+
+.attributeLabel {
+  font-size: 14px;
+  color: #888;
+}
+
+.attributeValue {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-align: right;
+}

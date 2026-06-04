@@ -1,0 +1,35 @@
+.apartmentHeaderContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    background: #ffffff;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+}
+
+h1 {
+    font-size: x-large;
+    font-weight: 700;
+}
+
+#apartmentHeaderLeft {
+    display: flex;
+    flex-direction: column;
+}
+
+#apartmentHeaderRight {
+    display: flex;
+    flex-direction: column;
+}
+
+#averageRating {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1a6ef5;
+}
+
+#numReviews {
+    font-size: smaller;
+    color: rgba(128, 128, 128, 0.8);
+}

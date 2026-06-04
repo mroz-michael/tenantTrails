@@ -5,6 +5,7 @@ import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
+import ApartmentDetails from './pages/ApartmentDetails';
 
 function App() {
 
@@ -20,6 +21,11 @@ function App() {
               <Dashboard />
             </ProtectedRoute>
           }/>
+          <Route path="/apartment/:id" element={
+            <ProtectedRoute>
+              <ApartmentDetails />
+            </ProtectedRoute>
+          } />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

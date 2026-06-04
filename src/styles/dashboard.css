@@ -80,6 +80,11 @@ body {
     margin-top: 3%;
 }
 
+.apartmentCardLink {
+    text-decoration: none;
+    color: black;
+}
+
 #dashboardFilters select {
     padding: 6px;
     border-radius: 8px;
@@ -97,6 +102,7 @@ body {
     gap: 16px;
     margin-top: 1.5rem;
 }
+
 
 .apartmentCardContainer {
     background: #ffffff;
