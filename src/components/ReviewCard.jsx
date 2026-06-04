@@ -9,11 +9,15 @@ function ReviewCard({ review }) {
     return (
         <div className="reviewCardContainer">
             <div className="reviewHeader">
-                <StarRating rating={rating} color="goldenrod" />
-                <span>{date}</span>
+                <div id="reviewHeaderLeft">
+                    <span className="review-author">{author && author.fullName ? author.fullName : "Unknown Author"}</span>
+                    <span>{date}</span>
+                </div>
+                <div id='reviewHeaderRight'>
+                    <StarRating rating={rating} color="goldenrod" />
+                </div>
             </div>
-            <p>{body}</p>
-            <span className="review-author">{author ? author.fullName : "Unknown Author"}</span>
+            <p id='reviewBody'>{body}</p>
         </div>
     );
 }

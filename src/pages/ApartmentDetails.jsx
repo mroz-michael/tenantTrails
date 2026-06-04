@@ -10,6 +10,7 @@ import { useAuth } from "../context/AuthContext.jsx";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import '../styles/apartmentDetails.css'
 import '../styles/dashboard.css'
+import { addReviews } from "../data/mockData.js";
 
 function ApartmentDetails() {
     const {id} = useParams();
@@ -24,6 +25,20 @@ function ApartmentDetails() {
     function handleClick() {
         logout();
         navigate("/");
+    }
+
+    function addReview(details) {
+        const {rating, body} = details;
+        const newReview = {
+            /*temporary values for id and date until DB is added */
+            id: Math.floor(Math.random() * 100000) + 1,
+            apartmentId: id,
+            rating,
+            body,
+            date: "June 4th 2026",
+            userId: user.id
+        }
+        addReviews(newReview);
     }
 
     return(
@@ -56,8 +71,8 @@ function ApartmentDetails() {
                 </div>
                 <div id='reviewContainer'>
                     <div id='reviewHeader'>
-                        <h2 id='reviewHeader'>Reviews({aptReviews.length})</h2>
-                        <button onClick={() => setShowReviewModal(true)}>+ Write a Review</button>
+                        <h2>Reviews({aptReviews.length})</h2>
+                        <button id='writeReviewButton' onClick={() => setShowReviewModal(true)}>+ Write a Review</button>
                     </div>
                     {aptReviews.length > 0 && aptReviews.map(r => (
                         <ReviewCard key={r.id} review={r} />
@@ -68,7 +83,7 @@ function ApartmentDetails() {
                 <div className="modalOverlay" onClick={() => setShowReviewModal(false)}>
                     <div className="modalContent" onClick={e => e.stopPropagation()}>
                         <ReviewDialog
-                            onSubmit={() => console.log("Placeholder until backend is added :)")}
+                            onSubmit={addReview}
                             onClose={() => setShowReviewModal(false)} 
                         />
                     </div>

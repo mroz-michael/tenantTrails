@@ -26,7 +26,7 @@ function Login() {
         const user = users.find( user => user.email == email && user.password == password);
 
         if (user) {
-            login({email: user.email, fullName: user.fullName});
+            login({email: user.email, fullName: user.fullName, id: user.id});
             navigate("/dashboard");
         } else {
             setErrors({invalid: "Invalid Credentials"});
