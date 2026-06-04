@@ -61,7 +61,7 @@ function Dashboard({}){
                     />
                 </div>
                 <div id='rightNavContainer'>
-                    <p>{user?.fullName.split(' ')[0]}</p>
+                    <Link to={`/user/${user.id}`}>{user?.fullName.split(' ')[0]}</Link>
                     <button id='dashboardSignOutButton' onClick={handleClick}>Sign Out</button>
                 </div>
             </nav>

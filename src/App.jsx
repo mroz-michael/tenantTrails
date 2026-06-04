@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import ApartmentDetails from './pages/ApartmentDetails';
+import UserProfile from './pages/UserProfile';
 
 function App() {
 
@@ -25,6 +26,11 @@ function App() {
             <ProtectedRoute>
               <ApartmentDetails />
             </ProtectedRoute>
+          } />
+          <Route path="/user/:id" element={
+            /*<ProtectedRoute> temporary commented out for easier debuggin */
+              <UserProfile />
+            /*</ProtectedRoute> */
           } />
         </Routes>
       </BrowserRouter>
