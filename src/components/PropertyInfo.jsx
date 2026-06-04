@@ -1,6 +1,7 @@
 import '../styles/propertyInfo.css';
 
 function PropertyInfo({info={}, neighbourhood}) {
+    //using hardcoded defaults until DB is added
     const attributes = [
         { label: "Landlord", value: "Killam Properties" },
         { label: "Units",    value: "88" },

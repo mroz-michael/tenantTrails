@@ -33,9 +33,11 @@
 }
 
 #apartmentDetailsContainer {
-    margin: 2%;
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
+    width: 80%;
+    padding: 2%;
     gap: 2%;
 }
 
@@ -45,4 +47,59 @@
     align-items: flex-start;
     justify-content: space-around;
     margin-top: 2%;
+}
+
+#keyIssuesContainer h3 {
+    font-size: 15px;
+    font-weight: 700;
+    text-align: left;
+    margin: 0 0 10px;
+}
+
+#keyIssuesTags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.issueTag {
+    padding: 5px 12px;
+    background: #eef3fe;
+    color: #1a6ef5;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+#reviewHeader {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+
+
+
+
+/*modal styling adapted from code example from Lab 3. */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modalContent {
+    background: white;
+    padding: 32px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
 }

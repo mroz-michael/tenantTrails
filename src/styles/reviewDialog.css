@@ -1,0 +1,73 @@
+.reviewDialog {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.reviewDialog h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    padding-bottom: 16px;
+    border-bottom: 1px solid gray;
+    width: 100%;
+    text-align: left;
+}
+
+.reviewDialog label {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    text-align: left;
+}
+
+.starInput span {
+    font-size: x-large;
+    color: gray;
+    cursor: pointer;
+    margin-right: 4px;
+}
+
+.starInput span.filled {
+    color: goldenrod;
+}
+
+.reviewDialog textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 12px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.reviewDialogActions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.cancelButton {
+    background: none;
+    border: none;
+    font-size: 14px;
+    padding: 10px 20px;
+    color: gray;
+    cursor: pointer;
+    margin: 0;
+}
+
+.submitButton {
+    background: #1a6ef5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0;
+}

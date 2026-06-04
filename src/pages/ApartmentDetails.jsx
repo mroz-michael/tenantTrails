@@ -1,12 +1,13 @@
-import { useParams } from "react-router-dom";
+import { useState } from "react";
 import ApartmentHeader from "../components/ApartmentHeader.jsx";
 import AISummary from "../components/AISummary.jsx";
 import PropertyInfo from "../components/PropertyInfo.jsx";
+import ReviewDialog from "../components/ReviewDialog.jsx";
 import {apartments, reviews} from "../data/mockData.js";
 import ReviewCard from "../components/ReviewCard.jsx";
 import SearchInput from "../components/SearchInput.jsx";
 import { useAuth } from "../context/AuthContext.jsx";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom";
 import '../styles/apartmentDetails.css'
 import '../styles/dashboard.css'
 
@@ -17,6 +18,8 @@ function ApartmentDetails() {
 
     const { user, logout } = useAuth();
     const navigate = useNavigate();
+
+    const [showReviewModal, setShowReviewModal] = useState(false);
 
     function handleClick() {
         logout();
@@ -43,11 +46,34 @@ function ApartmentDetails() {
                     {apartment.aiSummaries && <AISummary summary={apartment.aiSummaries} issues={apartment.aiIssues} />}
                     {apartment.propertyInfo || apartment.neighbourhood && <PropertyInfo neighbourhood={apartment.neighbourhood}/>}
                 </div>
-                <h2>{aptReviews.length} Review{aptReviews.length == 1 ? '' : 's'}</h2>
-                {aptReviews.length > 0 && aptReviews.map(r => (
-                    <ReviewCard key={r.id} review={r} />
-                ))}
+                <div id='keyIssuesContainer'>
+                    <h3>Key Issues</h3>
+                    <div id='keyIssuesTags'>
+                        {apartment.issues.map((issue) => (
+                            <span className='issueTag' key={issue}>{issue}</span>
+                        ))}
+                    </div>
+                </div>
+                <div id='reviewContainer'>
+                    <div id='reviewHeader'>
+                        <h2 id='reviewHeader'>Reviews({aptReviews.length})</h2>
+                        <button onClick={() => setShowReviewModal(true)}>+ Write a Review</button>
+                    </div>
+                    {aptReviews.length > 0 && aptReviews.map(r => (
+                        <ReviewCard key={r.id} review={r} />
+                    ))}
+                </div>
             </div>
+            {showReviewModal && (
+                <div className="modalOverlay" onClick={() => setShowReviewModal(false)}>
+                    <div className="modalContent" onClick={e => e.stopPropagation()}>
+                        <ReviewDialog
+                            onSubmit={() => console.log("Placeholder until backend is added :)")}
+                            onClose={() => setShowReviewModal(false)} 
+                        />
+                    </div>
+                </div>
+            )}
         </>
     )
 }
