@@ -16,7 +16,7 @@ function Login() {
     
     function handleSubmit(event) {
         event.preventDefault();
-        const validationErrors = validate();
+        const validationErrors = validate(email, password);
         setErrors(validationErrors);
     
         if (Object.keys(validationErrors).length > 0) {
@@ -33,21 +33,6 @@ function Login() {
         }
 
     
-    }
-
-    function validate() {
-        const e = {};
-
-        if (!email.trim()) {
-            e.email = "Email is Required";
-        }
-
-        if (!password.trim()) {
-            e.password = "Password is Required";
-        }
-
-
-        return e;
     }
 
 
@@ -89,5 +74,22 @@ function Login() {
         </div>
     )
 }
+
+    export function validate(email, password) {
+        const e = {};
+
+        if (!email.trim()) {
+            e.email = "Email is Required";
+        }
+
+        if (!password.trim()) {
+            e.password = "Password is Required";
+        } else if (password.length < 6) {
+            e.password = "Password must be at least 6 characters";
+        }
+
+
+        return e;
+    }
 
 export default Login;
