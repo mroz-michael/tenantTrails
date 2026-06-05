@@ -78,7 +78,7 @@ export const apartments = [
     }
 ];
 
-export const reviews = [
+export let reviews = [
     {
         id: 1,
         apartmentId: 1,
@@ -95,6 +95,10 @@ export function addUser(newUser) {
 
 export function addReviews(newReview) {
     reviews.push(newReview);
+}
+
+export function removeReview(reviewId) {
+    reviews = reviews.filter(r => r.id != reviewId);
 }
 
 export function addApartment(newApartment) {

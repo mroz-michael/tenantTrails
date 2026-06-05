@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "../styles/reviewDialog.css";
 
-function ReviewDialog({ onClose, onSubmit }) {
-    const [rating, setRating] = useState(0);
-    const [body, setBody] = useState("");
+function ReviewDialog({ onClose, onSubmit, initialValues, isEditing=false }) {
+    const [rating, setRating] = useState(initialValues?.rating || 0);
+    const [body, setBody] = useState(initialValues?.body || "");
 
     function handleSubmit() {
         if (rating === 0 || !body.trim()) return;
@@ -13,7 +13,7 @@ function ReviewDialog({ onClose, onSubmit }) {
 
     return (
         <div className="reviewDialog">
-            <h2>Write a Review</h2>
+            <h2>{isEditing ? "Edit Review" : "Write a Review"}</h2>
             <div style={{textAlign: "left"}}>
                 <label>Your rating</label>
                 <div className="starInput">
@@ -35,7 +35,7 @@ function ReviewDialog({ onClose, onSubmit }) {
             />
             <div className="reviewDialogActions">
                 <button className="cancelButton" onClick={onClose}>Cancel</button>
-                <button className="submitButton" onClick={handleSubmit}>Submit Review</button>
+                <button className="submitButton" onClick={handleSubmit}>{isEditing ? "Save Changes" : "Submit Review"}</button>
             </div>
         </div>
     );

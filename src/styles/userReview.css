@@ -1,0 +1,59 @@
+.userReviewItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    background-color: white;
+    width: 75%;
+    margin: 0 auto;
+}
+
+.userReviewItemLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.userReviewApartmentName {
+    font-weight: bold;
+}
+
+.userReviewBody {
+    margin: 0;
+    color: gray;
+    max-width: 500px;
+}
+
+.userReviewItemActions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.userReviewView {
+    background-color: white;
+    border: 1px solid lightgray;
+    cursor: pointer;
+    padding: 6px 12px;
+}
+
+.userReviewEdit {
+    border: 1px solid blue;
+    color: blue;
+    background: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.userReviewDelete {
+    border: 1px solid salmon;
+    color: salmon;
+    background: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
