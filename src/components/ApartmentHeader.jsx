@@ -3,7 +3,7 @@ import StarRating from './StarRating';
 
 function ApartmentHeader({apartment}) {
     const {name, address, neighbourhood, description, averageRating, numReviews} = apartment;
-    const avgRating = isNaN(averageRating) ? 0 : averageRating;
+    const avgRating = isNaN(Number(averageRating)) ? 0 : Number(averageRating);
     return(
         <div className='apartmentHeaderContainer'>
             <div id='apartmentHeaderLeft'>

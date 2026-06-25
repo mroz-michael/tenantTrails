@@ -28,9 +28,9 @@ function App() {
             </ProtectedRoute>
           } />
           <Route path="/user/:id" element={
-            /*<ProtectedRoute> temporary commented out for easier debuggin */
+            <ProtectedRoute>
               <UserProfile />
-            /*</ProtectedRoute> */
+            </ProtectedRoute>
           } />
         </Routes>
       </BrowserRouter>

@@ -1,4 +1,4 @@
-//file for temporary hardcoded data in-place of a backend database
+//no longer being used by app, was used prior to lab 6
 
 import marlstoneImg from '../assets/marlstone.jpg';
 import parkVictoriaImg from '../assets/parkvictoria.jpg';

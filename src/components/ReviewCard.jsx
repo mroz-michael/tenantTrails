@@ -1,17 +1,15 @@
 import "../styles/reviewCard.css";
 import StarRating from './StarRating';
-import { users } from "../data/mockData";
 
 function ReviewCard({ review }) {
-    const { rating, date, body, userId } = review;
-    const author = users.find(u => u.id == userId);
-
+    const { rating, date, body, author } = review;
+    const niceDate = date && new Date(date).toLocaleDateString();
     return (
         <div className="reviewCardContainer">
             <div className="reviewHeader">
                 <div id="reviewHeaderLeft">
-                    <span className="review-author">{author && author.fullName ? author.fullName : "Unknown Author"}</span>
-                    <span>{date}</span>
+                    <span className="review-author">{author ? author : "Unknown Author"}</span>
+                    <span>{niceDate || ""}</span>
                 </div>
                 <div id='reviewHeaderRight'>
                     <StarRating rating={rating} color="goldenrod" />

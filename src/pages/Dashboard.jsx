@@ -1,14 +1,18 @@
 import '../styles/dashboard.css';
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate, Link } from 'react-router-dom';
-import { apartments } from '../data/mockData';
 import SearchInput from "../components/SearchInput";
 import ApartmentCard from '../components/ApartmentCard';
 
-function Dashboard({}){
+const API = import.meta.env.VITE_API_URL;
+
+function Dashboard() {
+
     const { user, logout } = useAuth();
     const navigate = useNavigate();
+
+    const [apartments, setApartments] = useState([]);
 
     const [neighbourhoodFilter, setNeighbourhoodFilter] = useState('all');
     const [sortCriteria, setSortCriteria] = useState("highest");
@@ -18,6 +22,12 @@ function Dashboard({}){
     const numReviews = apartments?.reduce((runningTotal, apt) => runningTotal + apt.numReviews, 0);
     const distinctNeighbourhoods = new Set(apartments?.map(a => a.neighbourhood));
     const numNeighbourhoods = distinctNeighbourhoods?.size;
+
+   useEffect(() => {
+        fetch(`${API}/api/apartments`, { credentials: "include" })
+            .then((res) => res.json())
+            .then(setApartments);
+        }, []);
 
     function handleClick() {
         logout();
@@ -61,7 +71,7 @@ function Dashboard({}){
                     />
                 </div>
                 <div id='rightNavContainer'>
-                    <Link to={`/user/${user.id}`}>{user?.fullName.split(' ')[0]}</Link>
+                    <Link to={`/user/${user.id}`}>{user?.initials}</Link>
                     <button id='dashboardSignOutButton' onClick={handleClick}>Sign Out</button>
                 </div>
             </nav>

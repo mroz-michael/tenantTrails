@@ -3,7 +3,11 @@ import { Navigate } from 'react-router-dom';
 
 function ProtectedRoute({children}) {
     
-    const { user } = useAuth();
+    const { user, isLoading } = useAuth();
+
+    if (isLoading) {
+        return;
+    }
 
     if (!user) {
        return <Navigate to='/'/>

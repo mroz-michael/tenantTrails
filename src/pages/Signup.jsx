@@ -1,22 +1,21 @@
 import '../styles/forms.css';
 import {useState} from "react";
 import FormInput from '../components/FormInput';
-import { addUser } from '../data/mockData';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 function Signup() {
     
-    const [fullName, setFullName] = useState('');
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState({});
 
-    const { login } = useAuth();
+    const { signup } = useAuth();
     const navigate = useNavigate();
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
         const validationErrors = validate();
         setErrors(validationErrors);
@@ -25,18 +24,20 @@ function Signup() {
             return;
         }
 
-        const newUser = {fullName, email, password}
-        //temporary until backend implementation: adding new user to the mock data js file
-        addUser(newUser);
-        login({fullName, email});
-        navigate("/dashboard");
+        const newUser = {name, email, password}
+        try {
+            await signup(name, email, password);
+            navigate("/dashboard");
+        } catch (err) {
+            setErrors({ general: "Signup failed, please try again" });
+        }
     }
 
     function validate() {
         const e = {};
 
-        if (!fullName.trim()) {
-            e.fullName = "Full Name is Required";
+        if (!name.trim()) {
+            e.name = "Name is Required";
         }
 
         if (!email.trim()) {
@@ -75,13 +76,13 @@ function Signup() {
                     <p className='formDescription'> Create your account to submit reviews and comments.</p>
                 </header>
                 <FormInput  
-                    label="Full Name"
+                    label="Name"
                     type="text"
-                    name="fullName"
-                    value={fullName}
-                    onChange={e => setFullName(e.target.value)}
+                    name="name"
+                    value={name}
+                    onChange={e => setName(e.target.value)}
                     placeholder="Your name"
-                    error={errors.fullName}
+                    error={errors.name}
                 
                 />
                 <FormInput 

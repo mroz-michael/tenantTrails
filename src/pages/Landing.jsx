@@ -1,10 +1,20 @@
 import Button from "../components/Button";
 import {useNavigate} from 'react-router-dom';
 import '../styles/landing.css';
+import { useAuth } from "../context/AuthContext";
+import { useEffect } from "react";
 
 function Landing({}) {
 
     const navigate = useNavigate();
+    const { user, isLoading } = useAuth();
+
+    useEffect(() => {
+        if (!isLoading && user) {
+            navigate("/dashboard");
+        }
+    }, [user, isLoading]);
+
 
     function goToLogin() {
         navigate("/login");

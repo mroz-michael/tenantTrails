@@ -3,7 +3,6 @@ import {useState} from "react";
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import FormInput from '../components/FormInput';
-import { users } from '../data/mockData';
 
 function Login() {
 
@@ -14,7 +13,7 @@ function Login() {
     const { login } = useAuth();
     const navigate = useNavigate();
     
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
         const validationErrors = validate(email, password);
         setErrors(validationErrors);
@@ -23,15 +22,12 @@ function Login() {
             return;
         }
     
-        const user = users.find( user => user.email == email && user.password == password);
-
-        if (user) {
-            login({email: user.email, fullName: user.fullName, id: user.id});
+        try {
+            await login(email, password);
             navigate("/dashboard");
-        } else {
+        }catch (err) {
             setErrors({invalid: "Invalid Credentials"});
         }
-
     
     }
 
